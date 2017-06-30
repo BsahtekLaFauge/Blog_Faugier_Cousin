@@ -1,0 +1,14 @@
+<h1>Hello World</h1>
+<ul>
+	<% @blogs.each do |blog| %>
+		<li>
+			<%= link_to [:blog] do %>
+				<%= blog.titre %><br/>
+				<%= blog.chapeau %><br/>
+				<%= blog.vignette %><br/>
+				<%= blog.date_publication %>
+				<%= blog.auteur %>
+			<% end %>
+		</li>
+	<% end %>
+</ul>
