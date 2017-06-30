@@ -6,7 +6,7 @@ class CreateBlogs < ActiveRecord::Migration
       t.string :picture
       t.date :publication_date
       t.text :body
-      t.integer :author
+      t.integer :author_id
 
       t.timestamps
     end

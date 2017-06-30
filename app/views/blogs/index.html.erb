@@ -7,7 +7,7 @@
 			<% end %>
 			<%= blog.abstract %><br/>
 			<%= blog.picture %><br/>
-			<%= blog.publication_date %>
+			<%= blog.publication_date %>, par <%= blog.author.first_name %> <%= blog.author.last_name %>
 		</li>
 	<% end %>
 </ul>

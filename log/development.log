@@ -842,3 +842,178 @@ Processing by BlogsController#show as HTML
   [1m[36mBlog Load (3.6ms)[0m  [1mSELECT  "blogs".* FROM "blogs"  WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 1]]
   Rendered blogs/show.html.erb within layouts/application (0.5ms)
 Completed 200 OK in 48ms (Views: 42.5ms | ActiveRecord: 3.6ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.2ms)[0m  INSERT INTO "authors" ("created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2017-06-30 15:23:11.601284"], ["email", "valentinfaugier@gmail.com"], ["first_name", "Valentin"], ["last_name", "Faugier"], ["updated_at", "2017-06-30 15:23:11.601284"]]
+  [1m[36m (3.4ms)[0m  [1mcommit transaction[0m
+SQLite3::IOException: disk I/O error: commit transaction
+  [1m[35m (0.1ms)[0m  rollback transaction
+SQLite3::SQLException: cannot rollback - no transaction is active: rollback transaction
+  [1m[36mAuthor Load (7.0ms)[0m  [1mSELECT "authors".* FROM "authors"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (11.4ms)[0m  [1mINSERT INTO "authors" ("created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2017-06-30 15:25:01.040114"], ["email", "valentinfaugier@gmail.com"], ["first_name", "Valentin"], ["last_name", "Faugier"], ["updated_at", "2017-06-30 15:25:01.040114"]]
+  [1m[35m (3.4ms)[0m  commit transaction
+SQLite3::IOException: disk I/O error: commit transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+SQLite3::SQLException: cannot rollback - no transaction is active: rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (8.0ms)[0m  INSERT INTO "authors" ("created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2017-06-30 15:28:08.428488"], ["email", "valentinfaugier@gmail.com"], ["first_name", "Valentin"], ["last_name", "Faugier"], ["updated_at", "2017-06-30 15:28:08.428488"]]
+  [1m[36m (3.6ms)[0m  [1mcommit transaction[0m
+SQLite3::IOException: disk I/O error: commit transaction
+  [1m[35m (0.1ms)[0m  rollback transaction
+SQLite3::SQLException: cannot rollback - no transaction is active: rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAuthors (20170630142240)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (5.3ms)[0m  DROP TABLE "authors"
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20170630142240'[0m
+  [1m[35m (16.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateBlogs (20170630131523)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (8.7ms)[0m  DROP TABLE "blogs"
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20170630131523'[0m
+  [1m[35m (12.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBlogs (20170630131523)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (8.5ms)[0m  [1mCREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "abstract" text, "picture" varchar(255), "publication_date" date, "body" text, "author_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170630131523"]]
+  [1m[36m (14.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAuthors (20170630142240)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (5.8ms)[0m  [1mCREATE TABLE "authors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "last_name" varchar(255), "first_name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170630142240"]]
+  [1m[36m (13.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (7.5ms)[0m  INSERT INTO "authors" ("created_at", "email", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2017-06-30 15:38:47.284945"], ["email", "emacron@enmarche.fr"], ["first_name", "Emmanuel"], ["last_name", "Macron"], ["updated_at", "2017-06-30 15:38:47.284945"]]
+  [1m[36m (16.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mAuthor Load (5.0ms)[0m  SELECT "authors".* FROM "authors"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (47.7ms)[0m  INSERT INTO "blogs" ("abstract", "author_id", "body", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["abstract", "Nan je vous jure c'est vrai y a plein de gens qui m'ont élu"], ["author_id", 1], ["body", "Mais si! je vous jure c'est pas une blague même que j'ai fait 65%"], ["created_at", "2017-06-30 15:41:20.283222"], ["title", "Je suis président"], ["updated_at", "2017-06-30 15:41:20.283222"]]
+  [1m[36m (16.5ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2017-06-30 17:41:47 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (3.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBlog Load (3.3ms)[0m  SELECT  "blogs".* FROM "blogs"  WHERE "blogs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAuthor Load (3.6ms)[0m  [1mSELECT  "authors".* FROM "authors"  WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered blogs/show.html.erb within layouts/application (48.8ms)
+Completed 200 OK in 202ms (Views: 153.5ms | ActiveRecord: 28.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2017-06-30 17:41:47 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2017-06-30 17:41:47 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2017-06-30 17:41:47 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2017-06-30 17:41:47 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2017-06-30 17:41:47 +0200
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2017-06-30 17:42:27 +0200
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBlog Load (5.3ms)[0m  SELECT  "blogs".* FROM "blogs"  WHERE "blogs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAuthor Load (3.6ms)[0m  [1mSELECT  "authors".* FROM "authors"  WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered blogs/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 53ms (Views: 43.4ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2017-06-30 17:42:27 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2017-06-30 17:42:27 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2017-06-30 17:42:27 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2017-06-30 17:42:27 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2017-06-30 17:42:27 +0200
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2017-06-30 17:43:38 +0200
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBlog Load (4.6ms)[0m  SELECT  "blogs".* FROM "blogs"  WHERE "blogs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAuthor Load (3.1ms)[0m  [1mSELECT  "authors".* FROM "authors"  WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered blogs/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 62ms (Views: 53.1ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2017-06-30 17:43:38 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:38 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:38 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:38 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:38 +0200
+
+
+Started GET "/blogs" for 127.0.0.1 at 2017-06-30 17:43:41 +0200
+Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (3.3ms)[0m  SELECT "blogs".* FROM "blogs"
+  [1m[36mAuthor Load (4.0ms)[0m  [1mSELECT  "authors".* FROM "authors"  WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered blogs/index.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 59ms (Views: 50.9ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:41 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2017-06-30 17:43:41 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:41 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:41 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:41 +0200
+
+
+Started GET "/blogs" for 127.0.0.1 at 2017-06-30 17:43:58 +0200
+Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (4.2ms)[0m  SELECT "blogs".* FROM "blogs"
+  [1m[36mAuthor Load (3.3ms)[0m  [1mSELECT  "authors".* FROM "authors"  WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered blogs/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 55ms (Views: 47.1ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2017-06-30 17:43:58 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:58 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:58 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:58 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2017-06-30 17:43:58 +0200

@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170630142240) do
     t.string   "picture"
     t.date     "publication_date"
     t.text     "body"
-    t.integer  "author"
+    t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

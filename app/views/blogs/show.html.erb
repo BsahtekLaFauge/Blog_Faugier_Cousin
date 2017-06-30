@@ -4,4 +4,4 @@
 <p><%= @blog.abstract %></p><br/>
 <p><%= @blog.picture %></p><br/>
 <p><%= @blog.body %></p><br/>
-<p>écrit par <%= @blog.author %></p>
+<p>écrit par <%= @blog.author.first_name %> <%= @blog.author.last_name %></p>
