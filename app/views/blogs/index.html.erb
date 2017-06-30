@@ -2,13 +2,10 @@
 <ul>
 	<% @blogs.each do |blog| %>
 		<li>
-			<%= link_to [:blog] do %>
-				<%= blog.titre %><br/>
-				<%= blog.chapeau %><br/>
-				<%= blog.vignette %><br/>
-				<%= blog.date_publication %>
-				<%= blog.auteur %>
-			<% end %>
+			<%= blog.title %><br/>
+			<%= blog.abstract %><br/>
+			<%= blog.picture %><br/>
+			<%= blog.publication_date %>
 		</li>
 	<% end %>
 </ul>
