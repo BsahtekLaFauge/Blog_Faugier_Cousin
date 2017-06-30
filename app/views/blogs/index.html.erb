@@ -1,8 +1,10 @@
-<h1>Hello World</h1>
+<h1>Blogs du moment</h1>
 <ul>
 	<% @blogs.each do |blog| %>
 		<li>
-			<%= blog.title %><br/>
+			<%= link_to blog do %>
+				<%= blog.title %><br/>
+			<% end %>
 			<%= blog.abstract %><br/>
 			<%= blog.picture %><br/>
 			<%= blog.publication_date %>

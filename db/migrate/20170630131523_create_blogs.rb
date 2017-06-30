@@ -4,8 +4,9 @@ class CreateBlogs < ActiveRecord::Migration
       t.string :title
       t.text :abstract
       t.string :picture
-      t.datetime :publication_date
+      t.date :publication_date
       t.text :body
+      t.integer :author
 
       t.timestamps
     end

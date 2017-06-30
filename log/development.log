@@ -698,3 +698,147 @@ Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2017-06-30 15:42:36 
 
 
 Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2017-06-30 15:42:36 +0200
+  [1m[36mBlog Load (10.7ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (4.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mBlog Load (8.5ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAuthors (20170630142240)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAuthors (20170630142240)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (5.4ms)[0m  [1mCREATE TABLE "authors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "last_name" varchar(255), "first_name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170630142240"]]
+  [1m[36m (14.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/blogs" for 127.0.0.1 at 2017-06-30 16:44:29 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (4.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (3.3ms)[0m  SELECT "blogs".* FROM "blogs"
+  Rendered blogs/index.html.erb within layouts/application (40.6ms)
+Completed 500 Internal Server Error in 66ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"blogs"} missing required keys: [:id]):
+    2: <ul>
+    3: 	<% @blogs.each do |blog| %>
+    4: 		<li>
+    5: 			<%= link_to :blog do %>
+    6: 				<%= blog.title %><br/>
+    7: 			<% end %>
+    8: 			<%= blog.abstract %><br/>
+  app/views/blogs/index.html.erb:5:in `block in _app_views_blogs_index_html_erb__3519634668077380966_20093880'
+  app/views/blogs/index.html.erb:3:in `_app_views_blogs_index_html_erb__3519634668077380966_20093880'
+
+
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.4ms)
+
+
+Started GET "/blogs" for 127.0.0.1 at 2017-06-30 16:45:50 +0200
+Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (3.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  Rendered blogs/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 104ms (Views: 100.1ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2017-06-30 16:45:50 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2017-06-30 16:45:50 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2017-06-30 16:45:50 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2017-06-30 16:45:50 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2017-06-30 16:45:50 +0200
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2017-06-30 16:45:54 +0200
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBlog Load (3.3ms)[0m  SELECT  "blogs".* FROM "blogs"  WHERE "blogs"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered blogs/show.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 35ms
+
+ActionView::Template::Error (undefined method `author' for #<Blog:0x007f9100bc8890>):
+    4: <p><%= @blog.abstract %></p><br/>
+    5: <p><%= @blog.picture %></p><br/>
+    6: <p><%= @blog.body %></p><br/>
+    7: <p>écrit par <%= @blog.author %></p>
+  app/views/blogs/show.html.erb:7:in `_app_views_blogs_show_html_erb__1952462107812418780_70130379691480'
+
+
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAuthors (20170630142240)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (5.5ms)[0m  DROP TABLE "authors"
+  [1m[36mSQL (0.7ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20170630142240'[0m
+  [1m[35m (14.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (3.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.7ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateBlogs (20170630131523)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (6.0ms)[0m  DROP TABLE "blogs"
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20170630131523'[0m
+  [1m[35m (14.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (3.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBlogs (20170630131523)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (8.2ms)[0m  [1mCREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "abstract" text, "picture" varchar(255), "publication_date" date, "body" text, "author" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170630131523"]]
+  [1m[36m (13.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAuthors (20170630142240)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (5.7ms)[0m  [1mCREATE TABLE "authors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "last_name" varchar(255), "first_name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170630142240"]]
+  [1m[36m (13.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (3.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mBlog Load (5.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (7.8ms)[0m  [1mINSERT INTO "blogs" ("abstract", "body", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["abstract", "Le ruby c'est très bien"], ["body", "Le ruby c'est vraiment très bien"], ["created_at", "2017-06-30 14:50:44.401415"], ["title", "le ruby c'est bien"], ["updated_at", "2017-06-30 14:50:44.401415"]]
+  [1m[35m (16.5ms)[0m  commit transaction
+
+
+Started GET "/blogs" for 127.0.0.1 at 2017-06-30 16:51:10 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (3.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (9.4ms)[0m  SELECT "blogs".* FROM "blogs"
+  Rendered blogs/index.html.erb within layouts/application (64.6ms)
+Completed 200 OK in 207ms (Views: 158.4ms | ActiveRecord: 39.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2017-06-30 16:51:11 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2017-06-30 16:51:11 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2017-06-30 16:51:11 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2017-06-30 16:51:11 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2017-06-30 16:51:11 +0200
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2017-06-30 16:51:14 +0200
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBlog Load (3.6ms)[0m  [1mSELECT  "blogs".* FROM "blogs"  WHERE "blogs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered blogs/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 48ms (Views: 42.5ms | ActiveRecord: 3.6ms)

@@ -11,14 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170630131523) do
+ActiveRecord::Schema.define(version: 20170630142240) do
+
+  create_table "authors", force: true do |t|
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "blogs", force: true do |t|
     t.string   "title"
     t.text     "abstract"
     t.string   "picture"
-    t.datetime "publication_date"
+    t.date     "publication_date"
     t.text     "body"
+    t.integer  "author"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
